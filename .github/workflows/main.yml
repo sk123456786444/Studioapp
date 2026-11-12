@@ -20,8 +20,9 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Build with Gradle
+      - name: Accept Android Licenses & Build
         run: |
+          yes | sdkmanager --licenses || true
           if [ -f "gradlew" ]; then
             chmod +x gradlew
             ./gradlew assembleRelease bundleRelease
